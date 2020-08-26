@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Lint
         run: |
+          ls -lah
+          pwd
           python3 -m pip install flake8==3.7.8
           python3 -m pip install black==19.10b0
           # look for formatting errors
