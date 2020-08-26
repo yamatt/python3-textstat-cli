@@ -23,6 +23,9 @@ def create_args():
     return parser
 
 def render_output(textstat_cli, args):
+    """
+    Print results of the tests to the terminal
+    """
     if args.use_json_output:
         print(json_dumps(dict(textstat_cli)))
     else:

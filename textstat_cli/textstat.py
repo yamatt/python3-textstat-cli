@@ -6,6 +6,8 @@ class TextStat(TextStatistics):
     was written such as lack of PEP8 and not having an `init`.
     """
     def __init__(self, language=None):
+        """
+        """
         super(TextStat, self).__init__()
         if language:
             self.set_lang(language)
