@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from textstat_cli.cli import TextStat
+from textstat_cli.files import TextStatFile
 
 class TestTextStatFile(unittest.TestCase):
 
@@ -27,4 +27,3 @@ class TestTextStatFile(unittest.TestCase):
                 return "mock2"
 
         textstatfile = TextStatFile(None, mock_textstatcli)
-        

@@ -31,11 +31,12 @@ def render_output(textstat_cli, args):
     """
     Print results of the tests to the terminal
     """
+    result = dict(textstat_cli)
     if args.use_json_output:
-        print(json_dumps(dict(textstat_cli)))
+        print(json_dumps(result))
     else:
         text = ""
-        for file_name in dict(textstat_cli):
+        for file_name in result:
             print(file_name)
             for test in result[file_name]:
                 print(
