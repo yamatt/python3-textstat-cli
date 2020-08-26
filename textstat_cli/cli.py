@@ -46,7 +46,7 @@ class TextStatCli(object):
     @property
     def textstat(self):
         if not self._textstat:
-            self._textstat = TextStat(language=self.language)
+            self._textstat = self.TEXTSTAT(language=self.language)
         return self._textstat
 
     @property
