@@ -39,10 +39,7 @@ class TextStatCli(object):
         Initialises this class based on the results of argparse Namespace
         defined in __main__.create_args().
         """
-        return cls(
-            root_path=args.path,
-            language=args.language,
-        )
+        return cls(root_path=args.path, language=args.language)
 
     def __init__(self, root_path, language="en_US"):
         """
