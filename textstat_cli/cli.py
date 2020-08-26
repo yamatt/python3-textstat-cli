@@ -8,6 +8,7 @@ class TextStatCli(object):
     """
     Wrapper for textstat
     """
+
     TEXTSTAT = TextStat
     TEXTSTATFILE = TextStatFile
 
@@ -29,7 +30,7 @@ class TextStatCli(object):
         "fernandez_huerta",
         "szigriszt_pazos",
         "gutierrez_polini",
-        "crawford"
+        "crawford",
     ]
 
     @classmethod
@@ -79,8 +80,7 @@ class TextStatCli(object):
                     if extension in self.ACCEPTABLE_FILE_EXTENSIONS:
                         self._files.append(
                             self.TEXTSTATFILE.from_path(
-                                os.path.join(root_path, file_name),
-                                self
+                                os.path.join(root_path, file_name), self
                             )
                         )
         return self._files
@@ -90,4 +90,4 @@ class TextStatCli(object):
         Get all the results as a python dictionary object. Useful for converting
         to JSON.
         """
-        return dict([ (file.f.name, dict(file)) for file in self.files ])
+        return dict([(file.f.name, dict(file)) for file in self.files])

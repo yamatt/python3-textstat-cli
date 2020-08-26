@@ -1,9 +1,8 @@
-
-
 class TextStatFile(object):
     """
     An object that represents files on your system to run the tests against.
     """
+
     OPEN_MODE = "r"
 
     @classmethod
@@ -12,10 +11,7 @@ class TextStatFile(object):
         Initialise this class when you don't have a file object, but do have
         the file path.
         """
-        return cls(
-            open(file_path, cls.OPEN_MODE),
-            cli
-        )
+        return cls(open(file_path, cls.OPEN_MODE), cli)
 
     def __init__(self, f, cli):
         """
