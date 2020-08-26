@@ -1,6 +1,6 @@
 import unittest
 
-from __main__ import create_args
+from textstat_cli.__main__ import create_args
 
 class TestGetArgs(unittest.TestCase):
     def test_use_json(self):
