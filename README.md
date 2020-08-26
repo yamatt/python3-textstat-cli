@@ -9,11 +9,15 @@ A wrapper for textstat so that it can be better integrated it in to your automat
 
 ## Installation
 
-  python3 -m pip install textstat_cli
+```bash
+python3 -m pip install textstat_cli
+```
 
 ## Usage
 
-  python3 -m textstat_cli ./content
+```bash
+python3 -m textstat_cli ./content
+```
 
 ## License
 
