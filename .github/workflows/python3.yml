@@ -62,7 +62,9 @@ jobs:
       needs:
           - test
           - lint
-      run: |
-        python3 setup.py sdist
-        pip3 install twine
-        twine upload -u "__token__" -p "${{ secrets.PYPI_API }}" dist/*
+      steps:
+        - name: Publish to PyPI
+          run: |
+            python3 setup.py sdist
+            pip3 install twine
+            twine upload -u "__token__" -p "${{ secrets.PYPI_API }}" dist/*
