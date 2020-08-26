@@ -90,4 +90,4 @@ class TextStatCli(object):
         Get all the results as a python dictionary object. Useful for converting
         to JSON.
         """
-        return dict([ (file.f.name, dict(file)) for file in self.files ]
+        return dict([ (file.f.name, dict(file)) for file in self.files ])
