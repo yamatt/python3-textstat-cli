@@ -35,16 +35,19 @@ class TextStatCli(object):
 
     @classmethod
     def from_args(cls, args):
-        """
-        Initialises this class based on the results of argparse Namespace
+        """Initialises this class based on the results of argparse Namespace
         defined in __main__.create_args().
+
+        :param args: :class:`argparse.Namespace` like object to populate this
+            class
         """
         return cls(root_path=args.path, language=args.language)
 
     def __init__(self, root_path, language="en_US"):
         """
-        Set up the CLI with the path to explore, and the language to use.
-        Language is defined by textstat.
+        :param root_path: The base path as a string to look for files to run the
+            tests against.
+        :param language: :class:`textstat.textstat` defined language string
         """
         self.root_path = root_path
         self.language = language
@@ -54,8 +57,7 @@ class TextStatCli(object):
 
     @property
     def textstat(self):
-        """
-        Textstat singleton that is used throughought this library.
+        """Textstat singleton that is used throughought this library.
         """
         if not self._textstat:
             self._textstat = self.TEXTSTAT(language=self.language)
@@ -63,8 +65,7 @@ class TextStatCli(object):
 
     @property
     def files(self):
-        """
-        A list of all the files to scan, based upon initial root path.
+        """A list of all the files to scan, based upon initial root path.
         Only lists files that have the right file extension.
         Wraps those files in to the TextStatFile object.
         """
@@ -83,8 +84,7 @@ class TextStatCli(object):
         return self._files
 
     def __dict__(self):
-        """
-        Get all the results as a python dictionary object. Useful for converting
+        """Get all the results as a python dictionary object. Useful for converting
         to JSON.
         """
         return dict([(file.f.name, dict(file)) for file in self.files])
