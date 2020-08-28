@@ -57,8 +57,7 @@ class TextStatCli(object):
 
     @property
     def textstat(self):
-        """Textstat singleton that is used throughought this library.
-        """
+        """Textstat singleton that is used throughought this library."""
         if not self._textstat:
             self._textstat = self.TEXTSTAT(language=self.language)
         return self._textstat

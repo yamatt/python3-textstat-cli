@@ -1,6 +1,5 @@
 class TextStatFile(object):
-    """An object that represents files on your system to run the tests against.
-    """
+    """An object that represents files on your system to run the tests against."""
 
     OPEN_MODE = "r"
 
