@@ -35,10 +35,9 @@ class TextStatFile(object):
         There are a lot of methods in textstat and they're likely to change.
         This is the lazy (i.e.: DRY) way of accessing those methods
         """
-        try:
-            return super(TextStatFile, self).__getattr__(attr)
-        except AttributeError:
-            return getattr(self.cli.textstat, attr)
+        if hasattr(self, attr):
+            return getattr(self, attr)
+        return getattr(self.cli.textstat, attr)
 
     def __dict__(self):
         """
