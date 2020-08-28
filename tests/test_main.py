@@ -2,6 +2,7 @@ import unittest
 
 from textstat_cli.__main__ import create_args
 
+
 class TestGetArgs(unittest.TestCase):
     def test_use_json(self):
         args = create_args().parse_args("--json".split(" "))

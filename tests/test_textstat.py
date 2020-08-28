@@ -2,8 +2,8 @@ import unittest
 
 from textstat_cli.textstat import TextStat
 
-class TestTextStat(unittest.TestCase):
 
+class TestTextStat(unittest.TestCase):
     def test_default_initialization(self):
         test_textstat = TextStat()
         self.assertEqual(test_textstat.__lang, "en_US")

@@ -14,8 +14,7 @@ class TextStatFile(object):
         return cls(open(file_path, cls.OPEN_MODE), cli)
 
     def __init__(self, f, cli):
-        """
-        """
+        """"""
         self.f = f
         self.cli = cli
 
