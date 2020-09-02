@@ -29,14 +29,14 @@ class TestTextStatFile(unittest.TestCase):
 
     def test_text(self):
         test_file_contents = "test file contents"
-        test_file = StringIO(test_file_contents)
-        test_textstatfile = TextStatFile(test_file, None)
+        with StringIO(test_file_contents) as test_file:
+            test_textstatfile = TextStatFile(test_file, None)
 
-        self.assertIsNone(test_textstatfile._text)
-        test_text_result = test_textstatfile.text
-        self.assertEqual(test_textstatfile.text, test_file_contents)
-        self.assertEqual(id(test_textstatfile.text), id(test_text_result))
-        self.assertEqual(test_textstatfile._text, test_file_contents)
+            self.assertIsNone(test_textstatfile._text)
+            test_text_result = test_textstatfile.text
+            self.assertEqual(test_textstatfile.text, test_file_contents)
+            self.assertEqual(id(test_textstatfile.text), id(test_text_result))
+            self.assertEqual(test_textstatfile._text, test_file_contents)
 
     def test_to_dict(self):
         test_method_name = "test1"
