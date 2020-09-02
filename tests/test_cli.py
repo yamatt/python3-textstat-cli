@@ -20,7 +20,7 @@ class TestTextStatCLI(unittest.TestCase):
         for test_name in TextStatCli.TESTS:
             self.assertTrue(
                 hasattr(textstat, test_name),
-                "{test_name} was not found in textstat".format(test_name=test_name),
+                "'{test_name}' was not found in textstat".format(test_name=test_name),
             )
 
     def test_from_args_cls(self):
