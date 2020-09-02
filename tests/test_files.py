@@ -56,8 +56,7 @@ class TestTextStatFile(unittest.TestCase):
 
     def test_from_path_cls(self):
         mock_textstatcli = Mock()
-        temp_file = NamedTemporaryFile()
-
-        test_textstatfile = TextStatFile.from_path(temp_file.name, mock_textstatcli)
-        self.assertIsNotNone(test_textstatfile.f)
-        self.assertEqual(test_textstatfile.cli, mock_textstatcli)
+        with NamedTemporaryFile() as temp_file:
+            test_textstatfile = TextStatFile.from_path(temp_file.name, mock_textstatcli)
+            self.assertIsNotNone(test_textstatfile.f)
+            self.assertEqual(test_textstatfile.cli, mock_textstatcli)
