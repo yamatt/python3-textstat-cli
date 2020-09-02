@@ -11,4 +11,4 @@ class TestTextStat(unittest.TestCase):
     def test_setting_language_at_initialization(self):
         TEST_VALUE = "A test value"
         test_textstat = TextStat(language=TEST_VALUE)
-        self.assertEqual(test_textstat.__lang, TEST_VALUE)
+        self.assertEqual(test_textstat._textstatistics__lang, TEST_VALUE)

@@ -1,6 +1,6 @@
 import unittest
 
-from textstat import textstat
+from textstat.textstat import textstat
 
 from textstat_cli.cli import TextStatCli
 
@@ -14,8 +14,14 @@ class TestTextStatCLI(unittest.TestCase):
         self.assertEqual(id(result), id(test_textstatcli.textstat))
 
     def test_tests_exist(self):
+        """Validates that the tests I manually pulled out of textstat exist in
+        the original library.
+        """
         for test_name in TextStatCli.TESTS:
-            self.assertTrue(hasattr(textstat, test_name))
+            self.assertTrue(
+                hasattr(textstat, test_name),
+                "{test_name} was not found in textstat".format(test_name=test_name),
+            )
 
     def test_from_args_cls(self):
         class MockArgs:
@@ -31,7 +37,8 @@ class TestTextStatCLI(unittest.TestCase):
 
     def test_to_dictionary(self):
         class MockFile:
-            MOCK_FILE_DICT = {'foo': 'bar'}
+            MOCK_FILE_DICT = {"foo": "bar"}
+
             class f:
                 # mock file object
                 name = "test name"
