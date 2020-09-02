@@ -26,11 +26,7 @@ class TextStatCli(object):
         "difficult_words",
         "linsear_write_formula",
         "gunning_fog",
-        "text_standard",
-        "fernandez_huerta",
-        "szigriszt_pazos",
-        "gutierrez_polini",
-        "crawford",
+        "text_standard"
     ]
 
     @classmethod
