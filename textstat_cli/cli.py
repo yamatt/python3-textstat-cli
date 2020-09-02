@@ -26,7 +26,7 @@ class TextStatCli(object):
         "difficult_words",
         "linsear_write_formula",
         "gunning_fog",
-        "text_standard"
+        "text_standard",
     ]
 
     @classmethod
