@@ -17,7 +17,7 @@ class TestGetArgs(unittest.TestCase):
     def test_paths(self):
         TEST_PATH = "./test_path"
         args = create_args().parse_args(TEST_PATH.split(" "))
-        self.assertEqual(args.paths, [TEST_PATH])
+        self.assertEqual(args.path, [TEST_PATH])
 
     def test_language(self):
         TEST_LANGUAGE = "test_language"

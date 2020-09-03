@@ -37,12 +37,13 @@ class TextStatCli(object):
         :param args: :class:`argparse.Namespace` like object to populate this
             class
         """
-        return cls(paths=args.paths, language=args.language)
+        return cls(paths=args.path, language=args.language)
 
     def __init__(self, paths, language="en_US"):
         """
-        :param root_path: The base path as a string to look for files to run the
+        :param paths: A list of paths as strings to look for files to run the
             tests against.
+        :type paths: list
         :param language: :class:`textstat.textstat` defined language string
         """
         self.paths = paths
@@ -64,20 +65,53 @@ class TextStatCli(object):
         Only lists files that have the right file extension.
         Wraps those files in to the TextStatFile object.
         """
+        # TODO: this isn't DRY but not sure how to fix it right now
         if not self._files:
-            for path in paths:
+            self._paths_walk()
+        return self._files
+
+    def _paths_walk(self):
+        for path in self.paths:
+            if os.path.isfile(path):
+                self._claim_file(path)
+            else:
                 for root_path, _, file_names, _ in os.fwalk(path):
                     for file_name in file_names:
-                        # get the file extension, or the thing after the last dot
-                        # in the file name, to see if it's on the approved list
-                        extension = file_name.rsplit(".", maxsplit=1)[-1].lower()
-                        if extension in self.ACCEPTABLE_FILE_EXTENSIONS:
-                            self._files.append(
-                                self.TEXTSTATFILE.from_path(
-                                    os.path.join(root_path, file_name), self
-                                )
-                            )
-        return self._files
+                        file_path = os.path.join(root_path, file_name)
+                        self._claim_file(file_path)
+
+    def _claim_file(self, file_path):
+        """Takes file path, does some checks, and adds it to the files list if
+        it meets the criteria.
+
+        :param file_path: The path to the file to check
+        :type file_path: str
+        """
+        if self._extension_ok(file_path):
+            self._add_file(file_path)
+
+    def _extension_ok(self, file_name):
+        """Pass in a file path to see if the file is OK to be processed.
+
+        :param file_path: Path of file to be checked
+        :type file_path: str
+
+        :return: True if this file is OK to process. False if not and should be
+            rejected.
+        :rtype: bool
+        """
+        # get the file extension, or the thing after the last dot
+        # in the file name, to see if it's on the approved list
+        extension = file_name.rsplit(".", maxsplit=1)[-1].lower()
+        return extension in self.ACCEPTABLE_FILE_EXTENSIONS
+
+    def _add_file(self, file_path):
+        """Wraps file in processor object and adds to list of local variables
+
+        :param file_path: Path of file to add
+        :type file_path: str
+        """
+        self._files.append(self.TEXTSTATFILE.from_path(file_path, self))
 
     def to_dict(self):
         """Get all the results as a python dictionary object. Useful for converting

@@ -23,7 +23,7 @@ def create_args():
         dest="use_json_output",
         help="Use argument to have the results output as json.",
     )
-    parser.add_argument("paths", help="Where to find these files to parse.", nargs="+")
+    parser.add_argument("path", help="Where to find these files to parse.", nargs="+")
     return parser
 
 
