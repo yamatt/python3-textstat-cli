@@ -14,10 +14,10 @@ class TestGetArgs(unittest.TestCase):
         args = create_args().parse_args(".".split(" "))
         self.assertFalse(args.use_json_output)
 
-    def test_path(self):
+    def test_paths(self):
         TEST_PATH = "./test_path"
         args = create_args().parse_args(TEST_PATH.split(" "))
-        self.assertEqual(args.path, TEST_PATH)
+        self.assertEqual(args.paths, [TEST_PATH])
 
     def test_language(self):
         TEST_LANGUAGE = "test_language"

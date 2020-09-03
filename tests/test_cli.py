@@ -25,11 +25,11 @@ class TestTextStatCLI(unittest.TestCase):
 
     def test_from_args_cls(self):
         class MockArgs:
-            path = "test path"
+            paths = ["test path"]
             language = "test language"
 
         test_textstatcli = TextStatCli.from_args(MockArgs)
-        self.assertEqual(test_textstatcli.root_path, MockArgs.path)
+        self.assertEqual(test_textstatcli.paths, MockArgs.paths)
         self.assertEqual(test_textstatcli.language, MockArgs.language)
 
     def test_file_walk(self):

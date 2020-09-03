@@ -37,15 +37,15 @@ class TextStatCli(object):
         :param args: :class:`argparse.Namespace` like object to populate this
             class
         """
-        return cls(root_path=args.path, language=args.language)
+        return cls(paths=args.paths, language=args.language)
 
-    def __init__(self, root_path, language="en_US"):
+    def __init__(self, paths, language="en_US"):
         """
         :param root_path: The base path as a string to look for files to run the
             tests against.
         :param language: :class:`textstat.textstat` defined language string
         """
-        self.root_path = root_path
+        self.paths = paths
         self.language = language
 
         self._textstat = None
@@ -65,17 +65,18 @@ class TextStatCli(object):
         Wraps those files in to the TextStatFile object.
         """
         if not self._files:
-            for root_path, _, file_names, _ in os.fwalk(self.root_path):
-                for file_name in file_names:
-                    # get the file extension, or the thing after the last dot
-                    # in the file name, to see if it's on the approved list
-                    extension = file_name.rsplit(".", maxsplit=1)[-1].lower()
-                    if extension in self.ACCEPTABLE_FILE_EXTENSIONS:
-                        self._files.append(
-                            self.TEXTSTATFILE.from_path(
-                                os.path.join(root_path, file_name), self
+            for path in paths:
+                for root_path, _, file_names, _ in os.fwalk(path):
+                    for file_name in file_names:
+                        # get the file extension, or the thing after the last dot
+                        # in the file name, to see if it's on the approved list
+                        extension = file_name.rsplit(".", maxsplit=1)[-1].lower()
+                        if extension in self.ACCEPTABLE_FILE_EXTENSIONS:
+                            self._files.append(
+                                self.TEXTSTATFILE.from_path(
+                                    os.path.join(root_path, file_name), self
+                                )
                             )
-                        )
         return self._files
 
     def to_dict(self):
