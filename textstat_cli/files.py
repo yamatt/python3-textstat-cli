@@ -43,7 +43,7 @@ class TextStatFile(object):
 
         :return: Attribute from self or from textstat
         """
-        return getattr(self.cli.textstat, attr)
+        return lambda: getattr(self.cli.textstat, attr)(self.text)
 
     def to_dict(self):
         """For all of the tests/methods available in textstat, run through them
