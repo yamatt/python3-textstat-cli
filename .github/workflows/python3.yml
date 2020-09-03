@@ -55,6 +55,7 @@ jobs:
         run: |
           python3 -m unittest discover tests
           python3 -m ${{env.command}} --help
+          python3 -m ${{env.command}} samples/lorium.txt
   publish:
       name: Publish to PyPI
       runs-on: ubuntu-latest
