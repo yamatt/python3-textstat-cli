@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name="textstat-cli",
-    version="0.0.1",
+    version="0.0.2",
     description="A CLI wrapper for the textstat library",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
