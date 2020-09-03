@@ -21,8 +21,6 @@ class TestGetArgs(unittest.TestCase):
 
     def test_language(self):
         TEST_LANGUAGE = "test_language"
-        TEST_ARG = "--language {test_language} .".format(
-            test_language=TEST_LANGUAGE
-        )
+        TEST_ARG = "--language {test_language} .".format(test_language=TEST_LANGUAGE)
         args = create_args().parse_args(TEST_ARG.split(" "))
         self.assertEqual(args.language, TEST_LANGUAGE)
