@@ -7,26 +7,6 @@ from textstat_cli.files import TextStatFile
 
 
 class TestTextStatFile(unittest.TestCase):
-    def test_getattr_calls_self(self):
-        class TestTextStatFile(TextStatFile):
-            test_value = "test value"
-
-        test_textstatfile = TextStatFile(None, None)
-
-        self.assertEqual(test_textstatfile.test_value, TestTextStatFile.test_value)
-
-    def test_getattr_calls_textstat(self):
-        class MockTextStatCLI:
-            textstat = Mock()
-
-        test_method_name = "test_method_name"
-
-        test_textstatfile = TextStatFile(None, MockTextStatCLI)
-
-        getattr(test_textstatfile, test_method_name)()
-
-        getattr(MockTextStatCLI.textstat, test_method_name).assert_called()
-
     def test_text(self):
         test_file_contents = "test file contents"
         with StringIO(test_file_contents) as test_file:
@@ -38,7 +18,7 @@ class TestTextStatFile(unittest.TestCase):
             self.assertEqual(id(test_textstatfile.text), id(test_text_result))
             self.assertEqual(test_textstatfile._text, test_file_contents)
 
-    def test_to_dict(self):
+    def test_to_dictionary(self):
         test_method_name = "test1"
         test_method_result = "result1"
 
@@ -52,7 +32,7 @@ class TestTextStatFile(unittest.TestCase):
         result = test_textstatfile.to_dict()
 
         self.assertTrue(test_method_name in result)
-        self.assertEqual(result[test_method_name], test_method_result)
+        getattr(MockTextStatCLI.textstat, test_method_name).assert_called()
 
     def test_from_path_cls(self):
         mock_textstatcli = Mock()

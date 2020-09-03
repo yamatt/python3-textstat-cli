@@ -43,10 +43,12 @@ class TestTextStatCLI(unittest.TestCase):
                 # mock file object
                 name = "test name"
 
-            def __dict__(self):
-                return self.MOCK_FILE_DICT
+            @staticmethod
+            def to_dict():
+                return MockFile.MOCK_FILE_DICT
 
         test_textstatcli = TextStatCli(None)
+        test_textstatcli._files = [MockFile]
 
         self.assertEqual(
             test_textstatcli.to_dict(), {MockFile.f.name: MockFile.MOCK_FILE_DICT}
