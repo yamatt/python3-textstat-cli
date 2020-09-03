@@ -49,7 +49,7 @@ class TestTextStatFile(unittest.TestCase):
 
         test_textstatfile = TextStatFile(None, MockTextStatCLI)
 
-        result = dict(test_textstatfile)
+        result = test_textstatfile.to_dict()
 
         self.assertTrue(test_method_name in result)
         self.assertEqual(result[test_method_name], test_method_result)

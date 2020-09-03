@@ -46,8 +46,8 @@ class TestTextStatCLI(unittest.TestCase):
             def __dict__(self):
                 return self.MOCK_FILE_DICT
 
-        test_textstatcli = TextStatCli(None, None)
+        test_textstatcli = TextStatCli(None)
 
         self.assertEqual(
-            dict(test_textstatcli), {MockFile.f.name: MockFile.MOCK_FILE_DICT}
+            test_textstatcli.to_dict(), {MockFile.f.name: MockFile.MOCK_FILE_DICT}
         )

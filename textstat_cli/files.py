@@ -43,15 +43,14 @@ class TextStatFile(object):
 
         :return: Attribute from self or from textstat
         """
-        if hasattr(self, attr):
-            return getattr(self, attr)
         return getattr(self.cli.textstat, attr)
 
-    def __dict__(self):
+
+    def to_dict(self):
         """For all of the tests/methods available in textstat, run through them
         all and produce the results as a dictionary.
 
         :return: A dictionary representation of the results
         :rtype: dict
         """
-        return dict((name, getattr(name, self)()) for name in self.cli.TESTS)
+        return dict((name, getattr(self, name)()) for name in self.cli.TESTS)

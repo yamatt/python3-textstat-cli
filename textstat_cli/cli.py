@@ -49,7 +49,7 @@ class TextStatCli(object):
         self.language = language
 
         self._textstat = None
-        self._files = None
+        self._files = []
 
     @property
     def textstat(self):
@@ -78,8 +78,8 @@ class TextStatCli(object):
                         )
         return self._files
 
-    def __dict__(self):
+    def to_dict(self):
         """Get all the results as a python dictionary object. Useful for converting
         to JSON.
         """
-        return dict([(file.f.name, dict(file)) for file in self.files])
+        return dict([ (file.f.name, dict(file)) for file in self.files ])

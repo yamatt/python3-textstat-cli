@@ -31,7 +31,7 @@ def render_output(textstat_cli, args):
     """
     Print results of the tests to the terminal
     """
-    result = dict(textstat_cli)
+    result = textstat_cli.to_dict()
     if args.use_json_output:
         print(json_dumps(result))
     else:
