@@ -45,7 +45,6 @@ class TextStatFile(object):
         """
         return getattr(self.cli.textstat, attr)
 
-
     def to_dict(self):
         """For all of the tests/methods available in textstat, run through them
         all and produce the results as a dictionary.
