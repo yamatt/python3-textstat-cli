@@ -39,7 +39,7 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.6, 3.7, 3.8]
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v2
@@ -54,8 +54,8 @@ jobs:
       - name: Test
         run: |
           python3 -m unittest discover tests
-          python3 -m ${{env.command}} --help
-          python3 -m ${{env.command}} samples/lorium.txt
+          python3 -m ${{env.name}} --help
+          python3 -m ${{env.name}} samples/lorium.txt
   publish:
       name: Publish to PyPI
       runs-on: ubuntu-latest
