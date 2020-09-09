@@ -65,7 +65,6 @@ class TextStatCli(object):
         Only lists files that have the right file extension.
         Wraps those files in to the TextStatFile object.
         """
-        # TODO: this isn't DRY but not sure how to fix it right now
         if not self._files:
             self._paths_walk()
         return self._files
