@@ -52,4 +52,6 @@ class TextStatFile(object):
         :return: A dictionary representation of the results
         :rtype: dict
         """
-        return dict((name, getattr(self, name)()) for name in self.cli.TESTS)
+        return dict(
+            (friendly_name, getattr(self, method_name)()) for friendly_name, method_name in self.cli.TESTS.items()
+        )

@@ -19,11 +19,12 @@ class TestTextStatFile(unittest.TestCase):
             self.assertEqual(test_textstatfile._text, test_file_contents)
 
     def test_to_dictionary(self):
+        test_method_friendly_name = "Test Method Name"
         test_method_name = "test1"
         test_method_result = "result1"
 
         class MockTextStatCLI:
-            TESTS = [test_method_name]
+            TESTS = {test_method_friendly_name: test_method_name}
 
             textstat = Mock(return_value=test_method_result)
 
@@ -31,7 +32,7 @@ class TestTextStatFile(unittest.TestCase):
 
         result = test_textstatfile.to_dict()
 
-        self.assertTrue(test_method_name in result)
+        self.assertTrue(test_method_friendly_name in result.keys())
         getattr(MockTextStatCLI.textstat, test_method_name).assert_called()
 
     def test_from_path_cls(self):

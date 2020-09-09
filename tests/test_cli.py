@@ -21,10 +21,10 @@ class TestTextStatCLI(unittest.TestCase):
         """Validates that the tests I manually pulled out of textstat exist in
         the original library.
         """
-        for test_name in TextStatCli.TESTS:
+        for friendly_name, method_name in TextStatCli.TESTS.items():
             self.assertTrue(
-                hasattr(TextStat, test_name),
-                "'{test_name}' was not found in textstat".format(test_name=test_name),
+                hasattr(TextStat, method_name),
+                "'{test_name}' was not found in textstat".format(test_name=method_name),
             )
 
     def test_from_args_cls(self):

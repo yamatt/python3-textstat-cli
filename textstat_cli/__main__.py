@@ -40,7 +40,9 @@ def render_output(textstat_cli, args):
             print(file_name)
             for test in result[file_name]:
                 print(
-                    "\t{test}: {score}".format(test=test, score=result[file_name][test])
+                    "\t{test_name}: {score}".format(
+                        test_name=test, score=result[file_name][test]
+                    )
                 )
 
 

@@ -15,24 +15,24 @@ class TextStatCli(object):
     ACCEPTABLE_FILE_EXTENSIONS = ["txt", "md"]
 
     # methods in textstat for analysing text
-    TESTS = [
-        "syllable_count",
-        "lexicon_count",
-        "time_to_read_100wpm",
-        "time_to_read_130wpm",
-        "time_to_read_160wpm",
-        "flesch_reading_ease",
-        "smog_index",
-        "flesch_kincaid_grade",
-        "coleman_liau_index",
-        "automated_readability_index",
-        "automated_readability_index",
-        "dale_chall_readability_score",
-        "difficult_words",
-        "linsear_write_formula",
-        "gunning_fog",
-        "text_standard",
-    ]
+    TESTS = {
+        "Syllable Count": "syllable_count",
+        "Lexion Count": "lexicon_count",
+        "Reading time in minutes slowly": "time_to_read_100wpm",
+        "Reading time in minutes at average speed": "time_to_read_130wpm",
+        "Reading time in minutes fast": "time_to_read_160wpm",
+        "Flesch Reading Ease": "flesch_reading_ease",
+        "Smog Index": "smog_index",
+        "Flesch Kincaid Grade": "flesch_kincaid_grade",
+        "Coleman Liau Index": "coleman_liau_index",
+        "Automated Readability Index": "automated_readability_index",
+        "Automated Readability Index": "automated_readability_index",
+        "Dale/Chall Readability Score": "dale_chall_readability_score",
+        "Difficult Words": "difficult_words",
+        "Linsear Write Formula": "linsear_write_formula",
+        "Gunning Fog": "gunning_fog",
+        "Text Standard": "text_standard",
+    }
 
     @classmethod
     def from_args(cls, args):
