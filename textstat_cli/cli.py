@@ -16,6 +16,11 @@ class TextStatCli(object):
 
     # methods in textstat for analysing text
     TESTS = [
+        "syllable_count",
+        "lexicon_count",
+        "time_to_read_100wpm",
+        "time_to_read_130wpm",
+        "time_to_read_160wpm",
         "flesch_reading_ease",
         "smog_index",
         "flesch_kincaid_grade",

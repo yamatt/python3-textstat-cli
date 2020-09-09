@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import Mock
 import tempfile
 
-from textstat.textstat import textstat
+from textstat_cli.textstat import TextStat
 
 from textstat_cli.cli import TextStatCli
 
@@ -23,7 +23,7 @@ class TestTextStatCLI(unittest.TestCase):
         """
         for test_name in TextStatCli.TESTS:
             self.assertTrue(
-                hasattr(textstat, test_name),
+                hasattr(TextStat, test_name),
                 "'{test_name}' was not found in textstat".format(test_name=test_name),
             )
 
