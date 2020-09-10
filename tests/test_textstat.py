@@ -30,8 +30,7 @@ class TestTextStat(unittest.TestCase):
 
         getattr(test_textstat, function_name)(self.sample_text)
 
-        test_textstat.reading_speed.assert_called()
-        self.assertEqual(test_textstat.reading_speed.call_args.args[1], wpm)
+        test_textstat.reading_speed.assert_called_with(self.sample_text, wpm)
 
     def test_reading_speeds(self):
         for wpm in [100, 130, 160]:
