@@ -14,6 +14,7 @@ setup(
     author_email="matt@copperwaite.net",
     url="https://github.com/yamatt/python3-textstat-cli",
     packages=["textstat_cli"],
+    install_requires=open("requirements.txt", encoding="utf-8").readlines(),
     scripts=["scripts/textstat"],
     license="gplv3",
     project_urls={
