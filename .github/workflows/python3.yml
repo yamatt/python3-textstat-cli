@@ -56,7 +56,7 @@ jobs:
           python3 -m unittest discover tests
           python3 -m ${{env.name}} --help
           python3 -m ${{env.name}} samples/lorium.txt
-  test installation:
+  test-installation:
     name: Test installing the library
     runs-on: ubuntu-latest
     strategy:
