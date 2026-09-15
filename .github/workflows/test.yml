@@ -22,6 +22,9 @@ on:
       - "tests/**"
       - ".github/workflows/test.yml"
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Run some linting
