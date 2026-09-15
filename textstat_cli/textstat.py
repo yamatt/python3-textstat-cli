@@ -11,7 +11,7 @@ class TextStat(TextStatistics):
         :param args: :class:`argparse.Namespace` like object to populate this
             class
         """
-        super(TextStat, self).__init__()
+        super().__init__()
         if language:
             self.set_lang(language)
 

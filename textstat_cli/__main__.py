@@ -1,8 +1,6 @@
 import argparse
 from json import dumps as json_dumps
 
-import textstat
-
 from .cli import TextStatCli
 
 
@@ -35,14 +33,11 @@ def render_output(textstat_cli, args):
     if args.use_json_output:
         print(json_dumps(result))
     else:
-        text = ""
         for file_name in result:
             print(file_name)
             for test in result[file_name]:
                 print(
-                    "\t{test_name}: {score}".format(
-                        test_name=test, score=result[file_name][test]
-                    )
+                    f"\t{test}: {result[file_name][test]}"
                 )
 
 

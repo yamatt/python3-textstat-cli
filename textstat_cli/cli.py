@@ -1,10 +1,11 @@
 import os
+from typing import ClassVar
 
-from .textstat import TextStat
 from .files import TextStatFile
+from .textstat import TextStat
 
 
-class TextStatCli(object):
+class TextStatCli:
     """
     Wrapper for textstat
     """
@@ -12,10 +13,10 @@ class TextStatCli(object):
     TEXTSTAT = TextStat
     TEXTSTATFILE = TextStatFile
 
-    ACCEPTABLE_FILE_EXTENSIONS = ["txt", "md"]
+    ACCEPTABLE_FILE_EXTENSIONS: ClassVar[list[str]] = ["txt", "md"]
 
     # methods in textstat for analysing text
-    TESTS = {
+    TESTS: ClassVar[dict[str, str]] = {
         "Syllable Count": "syllable_count",
         "Lexion Count": "lexicon_count",
         "Reading time in minutes slowly": "time_to_read_100wpm",
@@ -25,7 +26,6 @@ class TextStatCli(object):
         "Smog Index": "smog_index",
         "Flesch Kincaid Grade": "flesch_kincaid_grade",
         "Coleman Liau Index": "coleman_liau_index",
-        "Automated Readability Index": "automated_readability_index",
         "Automated Readability Index": "automated_readability_index",
         "Dale/Chall Readability Score": "dale_chall_readability_score",
         "Difficult Words": "difficult_words",
@@ -121,9 +121,7 @@ class TextStatCli(object):
         """Get all the results as a python dictionary object. Useful for converting
         to JSON.
         """
-        return dict(
-            [
-                (textstatfile.f.name, textstatfile.to_dict())
-                for textstatfile in self.files
-            ]
-        )
+        return {
+            textstatfile.f.name: textstatfile.to_dict()
+            for textstatfile in self.files
+        }

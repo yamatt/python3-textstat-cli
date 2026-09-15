@@ -1,4 +1,4 @@
-class TextStatFile(object):
+class TextStatFile:
     """An object that represents files on your system to run the tests against."""
 
     OPEN_MODE = "r"
@@ -52,7 +52,7 @@ class TextStatFile(object):
         :return: A dictionary representation of the results
         :rtype: dict
         """
-        return dict(
-            (friendly_name, getattr(self, method_name)())
+        return {
+            friendly_name: getattr(self, method_name)()
             for friendly_name, method_name in self.cli.TESTS.items()
-        )
+        }
