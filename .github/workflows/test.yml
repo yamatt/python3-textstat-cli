@@ -38,7 +38,7 @@ jobs:
           python-version-file: ".python-version"
       - name: Lint
         run: |
-          uv run ruff textstat_cli
+          uv run ruff check textstat_cli
   test:
     name: Test the library
     runs-on: ubuntu-latest
