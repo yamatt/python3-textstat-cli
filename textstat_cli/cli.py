@@ -1,7 +1,7 @@
 import os
 from enum import Enum
-from typing import ClassVar
 from functools import cached_property
+from typing import ClassVar
 
 from .files import TextStatFile
 from .textstat import TextStat
