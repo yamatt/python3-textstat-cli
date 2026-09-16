@@ -1,4 +1,3 @@
-
 # Textstat CLI
 
 A wrapper for textstat so that it can be better integrated it in to your automated publishing pipelines. This isn't to have you make decisions about your text, but to better inform you about your text.
@@ -11,13 +10,13 @@ A wrapper for textstat so that it can be better integrated it in to your automat
 ## Installation
 
 ```bash
-python3 -m pip install textstat_cli
+uv add textstat_cli
 ```
 
 ## Usage
 
 ```bash
-python3 -m textstat_cli ./content
+uv run textstat_cli example.md
 ```
 
 ## License
