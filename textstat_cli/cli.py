@@ -1,6 +1,7 @@
 import os
 from enum import Enum
 from typing import ClassVar
+from functools import cached_property
 
 from .files import TextStatFile
 from .textstat import TextStat
@@ -48,15 +49,11 @@ class TextStatCli:
         self.paths = paths
         self.language = language
 
-        self._textstat = None
         self._files = []
 
-    @property
+    @cached_property
     def textstat(self):
-        """Textstat singleton that is used throughought this library."""
-        if not self._textstat:
-            self._textstat = self.TEXTSTAT(language=self.language)
-        return self._textstat
+        return self.TEXTSTAT(language=self.language.value)
 
     @property
     def files(self):
