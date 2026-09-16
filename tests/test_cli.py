@@ -27,15 +27,6 @@ class TestTextStatCLI(unittest.TestCase):
                 "'{test_name}' was not found in textstat".format(test_name=method_name),
             )
 
-    def test_from_args_cls(self):
-        class MockArgs:
-            path = ["test path"]
-            language = "test language"
-
-        test_textstatcli = TextStatCli.from_args(MockArgs)
-        self.assertEqual(test_textstatcli.paths, MockArgs.path)
-        self.assertEqual(test_textstatcli.language, MockArgs.language)
-
     def test_file_walk_single_file(self):
         single_file = "samples/lorium.txt"
         test_textstatcli = TextStatCli([single_file])

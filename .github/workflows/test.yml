@@ -27,7 +27,7 @@ permissions:
 
 jobs:
   lint:
-    name: Run some linting
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -71,5 +71,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Test
         run: |
-          uv run unittest discover tests
+          uv run -m unittest discover tests
           uv run textstat_cli samples/lorium.txt
