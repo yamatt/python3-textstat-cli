@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "python3-textstat-cli"
 version = "0.1.0"
@@ -5,10 +9,15 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "click>=8.5.0",
     "textstat==0.7.13",
 ]
 
+[project.scripts]
+textstat = "textstat_cli.__main__:main"
+
+[tool.setuptools]
+packages = ["textstat_cli"]
+
 [dependency-groups]
-dev = [
-    "ruff>=0.16.7",
-]
+dev = ["ruff>=0.16.7", "pytest>=8.0"]
