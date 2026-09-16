@@ -1,47 +1,25 @@
-import argparse
-from json import dumps as json_dumps
+import click
 
-from .cli import TextStatCli
+from .cli import Language, TextStatCli
+from .renderers import render_human_output, render_json_output
 
 
-def create_args():
+@click.command()
+@click.option("--language", "-l", default=Language.ENGLISH_US, help="Language to use as defined by en_US.", type=click.Choice(Language, case_sensitive=False)
+)
+@click.option("--json", "-j", is_flag=True, default=False, help="Use argument to have the results output as json."
+)
+@click.argument("paths", nargs=-1)
+def main(language, json, paths):
     """
-    Creates arguments for this main function.
-    Returns the created parser object.
+    Main entry point for this CLI.
     """
-    parser = argparse.ArgumentParser(description="Get stats about text files")
-    parser.add_argument(
-        "--language", "-l", default="en_US", help="Language to use as defined by en_US."
-    )
-    parser.add_argument(
-        "--json",
-        "-j",
-        action="store_true",
-        default=False,
-        dest="use_json_output",
-        help="Use argument to have the results output as json.",
-    )
-    parser.add_argument("path", help="Where to find these files to parse.", nargs="+")
-    return parser
-
-
-def render_output(textstat_cli, args):
-    """
-    Print results of the tests to the terminal
-    """
-    result = textstat_cli.to_dict()
-    if args.use_json_output:
-        print(json_dumps(result))
+    textstat_cli = TextStatCli(paths=paths, language=language)
+    if json:
+        render_json_output(textstat_cli)
     else:
-        for file_name in result:
-            print(file_name)
-            for test in result[file_name]:
-                print(
-                    f"\t{test}: {result[file_name][test]}"
-                )
+        render_human_output(textstat_cli)
 
 
 if __name__ == "__main__":
-    args = create_args().parse_args()
-    textstat_cli = TextStatCli.from_args(args)
-    render_output(textstat_cli, args)
+    main()

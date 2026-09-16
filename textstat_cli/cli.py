@@ -1,9 +1,13 @@
 import os
+from enum import Enum
 from typing import ClassVar
 
 from .files import TextStatFile
 from .textstat import TextStat
 
+
+class Language(Enum):
+    ENGLISH_US = "en_US"
 
 class TextStatCli:
     """
@@ -34,17 +38,7 @@ class TextStatCli:
         "Text Standard": "text_standard",
     }
 
-    @classmethod
-    def from_args(cls, args):
-        """Initialises this class based on the results of argparse Namespace
-        defined in __main__.create_args().
-
-        :param args: :class:`argparse.Namespace` like object to populate this
-            class
-        """
-        return cls(paths=args.path, language=args.language)
-
-    def __init__(self, paths, language="en_US"):
+    def __init__(self, paths, language: Language = Language.ENGLISH_US):
         """
         :param paths: A list of paths as strings to look for files to run the
             tests against.

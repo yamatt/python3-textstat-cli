@@ -1,11 +1,12 @@
 
 # Textstat CLI
 
-A wrapper for textstat so that it can be better integrated it in to your automated publishing pipelines. This isn't to have you make decisions about your text, but to arm you better about your text.
+A wrapper for textstat so that it can be better integrated it in to your automated publishing pipelines. This isn't to have you make decisions about your text, but to better inform you about your text.
 
 ## Requirements
 
-* Python 3.3 minimum
+* Python 3.10 minimum
+* uv
 
 ## Installation
 
