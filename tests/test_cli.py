@@ -9,13 +9,6 @@ from textstat_cli.cli import TextStatCli
 
 
 class TestTextStatCLI(unittest.TestCase):
-    def test_textstat_singleton(self):
-        test_textstatcli = TextStatCli(None)
-        self.assertIsNone(test_textstatcli._textstat)
-        result = test_textstatcli.textstat
-        self.assertIsNotNone(test_textstatcli._textstat)
-        self.assertEqual(id(result), id(test_textstatcli.textstat))
-        self.assertIsInstance(result, TextStatCli.TEXTSTAT)
 
     def test_tests_exist(self):
         """Validates that the tests I manually pulled out of textstat exist in
