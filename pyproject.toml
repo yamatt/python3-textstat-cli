@@ -1,22 +1,19 @@
 [build-system]
-requires = ["setuptools>=68"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "textstat-cli"
-version = "0.1.0"
 description = "Get stats about text from the command line."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = ["click>=8.5.0", "textstat==0.7.13"]
+dynamic = ["version"]
 
 [project.scripts]
 textstat = "textstat_cli.__main__:main"
 textstat_cli = "textstat_cli.__main__:main"
 textstat-cli = "textstat_cli.__main__:main"
-
-[tool.setuptools]
-packages = ["textstat_cli"]
 
 [dependency-groups]
 dev = ["ruff>=0.16.7", "pytest>=8.0"]
