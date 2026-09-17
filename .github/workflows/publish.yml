@@ -31,4 +31,5 @@ jobs:
           python-version-file: ".python-version"
       - name: Publish
         run: |
+          uv build
           uv publish
