@@ -31,4 +31,4 @@ jobs:
           python-version-file: ".python-version"
       - name: Publish
         run: |
-          uv publish --non-interactive
+          uv publish
