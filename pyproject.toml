@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python3-textstat-cli"
+name = "textstat-cli"
 version = "0.1.0"
-description = "Add your description here"
+description = "Get stats about text from the command line."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = ["click>=8.5.0", "textstat==0.7.13"]
