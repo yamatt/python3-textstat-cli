@@ -13,6 +13,10 @@ updates:
       default-days: 7
     assignees:
       - yamatt
+    groups:
+      minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     labels:
       - dependabot
       - python
@@ -24,6 +28,10 @@ updates:
       default-days: 7
     assignees:
       - yamatt
+    groups:
+      minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     labels:
       - dependabot
       - github-actions
