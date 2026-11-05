@@ -18,7 +18,7 @@ updates:
         patterns: ["*"]
         update-types: ["minor", "patch"]
     labels:
-      - dependabot
+      - dependencies
       - python
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: ".github/workflows" # Location of package manifests
