@@ -1,6 +1,8 @@
 name: Auto-merge
 
-on: pull_request
+on:
+  pull_request:
+    types: [opened, reopened]
 
 permissions:
   contents: write
@@ -13,7 +15,11 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - name: Enable auto-merge for Dependabot PRs
+      - name: Get Dependabot metadata
+        id: meta
+        uses: dependabot/fetch-metadata@v2
+      - name: Enable auto-merge for Dependabot PRs if not major version
+        if: steps.meta.outputs.update-type != 'version-update:semver-major'
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
